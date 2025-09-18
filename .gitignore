@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# Data folders
+data/raw/
+data/processed/
+
+# Output models, logs, plots
+outputs/
+mlruns/
+
+# DVC cache (optional, if using DVC later)
+.dvc/
+.dvcignore
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# System files (Windows/Mac)
+Thumbs.db
+.DS_Store
