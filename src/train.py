@@ -85,6 +85,19 @@ def train_and_evaluate(test_size=0.2, random_state=42, max_features=5000, ngram_
         print("\nClassification report:\n", classification_report(y_test, y_pred, digits=4))
         print("\nConfusion matrix:\n", confusion_matrix(y_test, y_pred))
 
+        # Write metrics to a file release_notes.md
+        with open("release_notes.md", "w") as f:
+        f.write(f"# Sentiment Analysis Model\n\n")
+        f.write(f"**Commit SHA:** {os.getenv('GITHUB_SHA', 'local-run')}\n\n")
+        f.write("## Parameters\n")
+        f.write(f"- max_features: {max_features}\n")
+        f.write(f"- ngram_range: {ngram_range}\n\n")
+        f.write("## Metrics\n")
+        f.write(f"- Accuracy: {acc:.4f}\n")
+        f.write(f"- Precision: {prec:.4f}\n")
+        f.write(f"- Recall: {rec:.4f}\n")
+        f.write(f"- F1 Score: {f1:.4f}\n")
+
         # --- 6. Confusion matrix as artifact -----------------------------
         cm = confusion_matrix(y_test, y_pred)
         plt.figure(figsize=(5, 4))
