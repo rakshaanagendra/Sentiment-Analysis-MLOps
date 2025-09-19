@@ -66,3 +66,35 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
 #Create a clean Ubuntu machine
 #Install Python + dependencies
 #Run your training script
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: "auto-release-${{ github.run_number }}"
+          body: "Auto release for commit ${{ github.sha }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload model to release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: outputs/model/logreg_tfidf_pipeline.pkl
+          asset_name: logreg_tfidf_pipeline.pkl
+          asset_content_type: application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload confusion matrix to release
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: outputs/confusion_matrix.png
+          asset_name: confusion_matrix.png
+          asset_content_type: image/png
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
