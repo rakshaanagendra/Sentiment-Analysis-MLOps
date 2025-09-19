@@ -3,7 +3,7 @@ import pandas as pd
 from preprocess import preprocess_text   # reuse your preprocessing function
 
 def load_imdb_dataset():
-    file_path = "data/raw/acImdb/IMDB_Dataset/IMDB-Dataset.csv"
+    file_path = "data/raw/acImdb/IMDB-Dataset.csv"
     df = pd.read_csv(file_path)
     df.rename(columns={"review": "text", "sentiment": "label"}, inplace=True)
 
