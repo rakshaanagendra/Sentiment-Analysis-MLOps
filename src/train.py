@@ -118,3 +118,18 @@ if __name__ == "__main__":
 
     print("\n=== Run 2: 10000 features, unigrams+bigrams ===")
     train_and_evaluate(max_features=10000, ngram_range=(1, 2))
+
+
+# Write metrics to a file release_notes.md
+with open("release_notes.md", "w") as f:
+    f.write(f"# Sentiment Analysis Model\n\n")
+    f.write(f"**Commit SHA:** {os.getenv('GITHUB_SHA', 'local-run')}\n\n")
+    f.write("## Parameters\n")
+    f.write(f"- max_features: {max_features}\n")
+    f.write(f"- ngram_range: {ngram_range}\n\n")
+    f.write("## Metrics\n")
+    f.write(f"- Accuracy: {acc:.4f}\n")
+    f.write(f"- Precision: {prec:.4f}\n")
+    f.write(f"- Recall: {rec:.4f}\n")
+    f.write(f"- F1 Score: {f1:.4f}\n")
+

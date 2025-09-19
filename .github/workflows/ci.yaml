@@ -72,15 +72,14 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ github.run_number }}
-          release_name: "auto-release-${{ github.run_number }}"
-          body: "Auto release for commit ${{ github.sha }}"
-          draft: false
-          prerelease: false
+          name: "Auto Release ${{ github.run_number }}"
+          body_path: release_notes.md   # ✅ use generated notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Upload model to release
         uses: actions/upload-release-asset@v1
