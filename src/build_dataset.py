@@ -2,8 +2,11 @@ import os
 import pandas as pd
 from preprocess import preprocess_text   # reuse your preprocessing function
 
-def load_imdb_dataset(base_path="data/raw/acImdb"):
-    data = []
+def load_imdb_dataset():
+    file_path = "data/raw/acImdb/IMDB Dataset.csv"
+    df = pd.read_csv(file_path)
+    df.columns = ["text", "label"]  # Kaggle dataset already has these
+    return df
 
     # --- TRAIN DATA ---
     for label_type in ["pos", "neg"]:

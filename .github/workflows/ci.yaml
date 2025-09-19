@@ -24,6 +24,22 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install Kaggle
+        run: pip install kaggle
+
+      - name: Setup Kaggle credentials
+        run: |
+          mkdir -p ~/.kaggle
+          echo "$KAGGLE_JSON" > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Download IMDB dataset
+        run: |
+          mkdir -p data/raw
+          kaggle datasets download -d lakshmi25npathi/imdb-dataset-of-50k-movie-reviews -p data/raw
+          unzip data/raw/imdb-dataset-of-50k-movie-reviews.zip -d data/raw/acImdb
+
+
       - name: Run training script
         run: |
           python src/train.py
