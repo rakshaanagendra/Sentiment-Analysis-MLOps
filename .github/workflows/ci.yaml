@@ -35,10 +35,9 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
 
       - name: Download IMDB dataset
         run: |
-          mkdir -p data/raw
+          mkdir -p data/raw/acImdb
           kaggle datasets download -d lakshmi25npathi/imdb-dataset-of-50k-movie-reviews -p data/raw
-          unzip data/raw/imdb-dataset-of-50k-movie-reviews.zip -d data/raw/acImdb
-
+          unzip -o data/raw/imdb-dataset-of-50k-movie-reviews.zip -d data/raw/acImdb/IMDB_Dataset
 
       - name: Run training script
         run: |
