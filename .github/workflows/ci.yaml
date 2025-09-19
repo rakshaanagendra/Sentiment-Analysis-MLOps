@@ -30,8 +30,9 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
       - name: Setup Kaggle credentials
         run: |
           mkdir -p ~/.kaggle
-          echo "$KAGGLE_JSON" > ~/.kaggle/kaggle.json
+          echo '${{ secrets.KAGGLE_JSON }}' > ~/.kaggle/kaggle.json
           chmod 600 ~/.kaggle/kaggle.json
+
 
       - name: Download IMDB dataset
         run: |
