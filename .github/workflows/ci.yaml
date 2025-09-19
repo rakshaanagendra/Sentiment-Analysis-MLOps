@@ -43,11 +43,11 @@ jobs:              # Workflows have jobs. Each job runs on a machine (like a VM)
 
       - name: Run training script
         run: |
-          python src/train.py
+          PYTHONPATH=${{ github.workspace }} python -m src.train
 
       - name: Run tests
         run: |
-          PYTHONPATH=. pytest tests/ --maxfail=1 --disable-warnings -q
+          PYTHONPATH=${{ github.workspace }} pytest tests/ --maxfail=1 --disable-warnings -q
 
       - name: Upload confusion matrix
         uses: actions/upload-artifact@v4
