@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-from preprocess import preprocess_text   # reuse your preprocessing function
 
 def load_imdb_dataset():
     file_path = "data/raw/acImdb/IMDB-Dataset.csv"
