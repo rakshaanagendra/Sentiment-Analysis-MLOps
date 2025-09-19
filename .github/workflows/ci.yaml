@@ -6,6 +6,9 @@ on:                # When should this workflow run?
   pull_request:    # Also run when a pull request is opened/updated
     branches: [ main ]
 
+permissions:
+  contents: write   # ✅ Needed for create-releas
+
 jobs:              # Workflows have jobs. Each job runs on a machine (like a VM).
   build:           # Name of our job
     runs-on: ubuntu-latest   # Type of machine (GitHub provides Ubuntu for free)
