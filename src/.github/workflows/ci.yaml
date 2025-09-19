@@ -1,0 +1,51 @@
+name: CI Pipeline  # The name of the workflow (shows up in GitHub Actions tab)
+
+on:                # When should this workflow run?
+  push:            # Run on every git push
+    branches: [ main ]   # Only run if push happens on 'main' branch
+  pull_request:    # Also run when a pull request is opened/updated
+    branches: [ main ]
+
+jobs:              # Workflows have jobs. Each job runs on a machine (like a VM).
+  build:           # Name of our job
+    runs-on: ubuntu-latest   # Type of machine (GitHub provides Ubuntu for free)
+
+    steps:         # A job is a sequence of steps
+      - name: Checkout code
+        uses: actions/checkout@v4   # Action to pull your repo code into the VM
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"    # Choose Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run training script
+        run: |
+          python src/train.py
+
+      - name: Run tests
+        run: |
+          pytest tests/ --maxfail=1 --disable-warnings -q
+
+      - name: Upload confusion matrix
+        uses: actions/upload-artifact@v4
+        with:
+          name: confusion-matrix
+          path: outputs/confusion_matrix.png
+
+      - name: Upload trained model
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentiment-model
+          path: outputs/model/logreg_tfidf_pipeline.pkl
+
+
+#With this file, every time we push to main, GitHub will:
+#Create a clean Ubuntu machine
+#Install Python + dependencies
+#Run your training script
