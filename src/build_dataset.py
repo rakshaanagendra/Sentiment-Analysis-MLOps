@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from preprocess import preprocess_text   # reuse your preprocessing function
 
-def load_imdb_dataset(base_path="data/raw/aclImdb"):
+def load_imdb_dataset(base_path="data/raw/acImdb"):
     data = []
 
     # --- TRAIN DATA ---
