@@ -5,7 +5,7 @@ import joblib
 import mlflow
 import mlflow.sklearn
 
-from build_dataset import load_imdb_dataset
+from src.build_dataset import load_imdb_dataset
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
