@@ -81,7 +81,7 @@ Here are some experiment results:
 ![Confusion Matrix](screenshots/confusion_matrix.png)
 
 ### FastAPI Swagger
-![FastAPI Swagger](s/FastAPI_Swagger.png)
+![FastAPI Swagger](screenshots/FastAPI_Swagger.png)
 
 ---
 
