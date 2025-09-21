@@ -58,6 +58,7 @@ pip install -r requirements.txt
 ```bash
 python src/train.py  # This trains TF+IDF + Logistic regression pipeling and saves outputs/model/               logreg_tfidf_pipeline.pkl, metrics and plots are saved inside mlruns/ (tracked by mlflow)
 
+``` bash
 mlflow ui
 
 ## 🧠 Using the Model
@@ -78,10 +79,10 @@ print("Prediction:", pred)  # 0=negative, 1=positive
 Here are some experiment results:
 
 ### Confusion Matrix
-![Confusion Matrix](outputs/confusion_matrix.png)
+![Confusion Matrix](screenshots/confusion_matrix.png)
 
 ### FastAPI Swagger
-![FastAPI Swagger](outputs/FastAPI_Swagger.png)
+![FastAPI Swagger](screenshots/FastAPI_Swagger.png)
 
 ---
 
