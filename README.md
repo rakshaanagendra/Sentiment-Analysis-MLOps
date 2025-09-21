@@ -78,10 +78,10 @@ print("Prediction:", pred)  # 0=negative, 1=positive
 Here are some experiment results:
 
 ### Confusion Matrix
-![Confusion Matrix](outputs/confusion_matrix.png)
+![Confusion Matrix](screenshots/confusion_matrix.png)
 
 ### FastAPI Swagger
-![FastAPI Swagger](outputs/FastAPI_Swagger.png)
+![FastAPI Swagger](s/FastAPI_Swagger.png)
 
 ---
 
