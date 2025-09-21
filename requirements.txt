@@ -9,3 +9,6 @@ dvc
 jupyter
 pytest
 joblib
+fastapi
+uvicorn
+huggingface-hub
