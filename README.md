@@ -2,8 +2,7 @@
 
 This repository contains an **end-to-end machine learning pipeline** for **IMDB Movie Reviews Sentiment Analysis**.  
 We use a simple but effective **TF-IDF + Logistic Regression** model, and integrate **MLOps tools** for reproducibility, tracking, and deployment.
-
----
+<br /><br />
 
 ## 📚 Project Overview
 - **Goal**: Classify IMDB movie reviews as **positive** or **negative**  
@@ -15,10 +14,11 @@ We use a simple but effective **TF-IDF + Logistic Regression** model, and integr
   - **GitHub Actions** → CI/CD automation  
   - **Hugging Face Hub** → model hosting  
   - **FastAPI** → REST API deployment  
+<br /><br />
 
----
 
 ## 📂 Repository Structure
+<pre>
 Sentiment-Analysis-MLOps/
 │
 ├── data/ # Raw & processed data (DVC managed)
@@ -34,14 +34,14 @@ Sentiment-Analysis-MLOps/
 ├── dvc.yaml # DVC pipeline definition
 ├── MLproject / mlruns/ # MLflow tracking artifacts
 └── README.md # Project documentation
+</pre>
+<br /><br />
 
-
----
 
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the repo
-```bash
+```
 git clone https://github.com/<your-username>/Sentiment-Analysis-MLOps.git
 cd Sentiment-Analysis-MLOps
 
@@ -55,10 +55,12 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 
 # Training and tracking
-python src/train.py  # This trains TF+IDF + Logistic regression pipeling and saves outputs/model/               logreg_tfidf_pipeline.pkl, metrics and plots are saved inside mlruns/ (tracked by mlflow)
+python src/train.py  # This trains TF+IDF + Logistic regression pipeling and saves outputs/model/logreg_tfidf_pipeline.pkl, metrics and plots are saved inside mlruns/ (tracked by mlflow)
 
 mlflow ui
 ```
+<br /><br />
+
 
 ## 🧠 Using the Model
 
@@ -71,8 +73,8 @@ review = "The movie was absolutely wonderful, I loved the story!"
 pred = pipeline.predict([review])[0]
 print("Prediction:", pred)  # 0=negative, 1=positive
 ```
+<br /><br />
 
----
 
 ## 📊 Results
 
@@ -83,8 +85,8 @@ Here are some experiment results:
 
 ### FastAPI Swagger
 ![FastAPI Swagger](screenshots/FastAPI_Swagger.png)
+<br /><br />
 
----
 
 ## ⚡ FastAPI Deployment
 
@@ -101,8 +103,8 @@ Health check → http://127.0.0.1:8000/health
 
 Swagger docs → http://127.0.0.1:8000/docs
 ```
+<br /><br />
 
----
 
 ## 📈 MLOps Workflow
 
@@ -115,8 +117,8 @@ Experiment tracking → MLflow logs parameters, metrics, and artifacts
 Automation → GitHub Actions provides CI/CD (tests, releases)
 
 Deployment → FastAPI serves the model as an API locally (Docker/Cloud next 🚀)
+<br /><br />
 
----
 
 ## 📜 License
 
