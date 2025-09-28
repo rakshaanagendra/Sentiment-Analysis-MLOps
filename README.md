@@ -55,10 +55,10 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 
 # Training and tracking
-```bash
 python src/train.py  # This trains TF+IDF + Logistic regression pipeling and saves outputs/model/               logreg_tfidf_pipeline.pkl, metrics and plots are saved inside mlruns/ (tracked by mlflow)
 
 mlflow ui
+```
 
 ## 🧠 Using the Model
 
@@ -70,6 +70,7 @@ pipeline = joblib.load("outputs/model/logreg_tfidf_pipeline.pkl")
 review = "The movie was absolutely wonderful, I loved the story!"
 pred = pipeline.predict([review])[0]
 print("Prediction:", pred)  # 0=negative, 1=positive
+```
 
 ---
 
@@ -99,6 +100,7 @@ Root → http://127.0.0.1:8000/
 Health check → http://127.0.0.1:8000/health
 
 Swagger docs → http://127.0.0.1:8000/docs
+```
 
 ---
 
